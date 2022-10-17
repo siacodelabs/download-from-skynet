@@ -1,6 +1,6 @@
 {
   "name": "download-from-skynet",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Action for downloading a file from a Skynet platform.",
   "author": "Sia Codelabs",
   "repository": {
