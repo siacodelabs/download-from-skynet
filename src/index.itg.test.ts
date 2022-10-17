@@ -12,7 +12,11 @@ suite("download file", () => {
   const localPath = path.join(os.tmpdir(), "downloaded.txt")
 
   setup(async () => {
-    await fs.unlink(localPath)
+    try {
+      await fs.unlink(localPath)
+    } catch {
+      // nop
+    }
   })
 
   test("if file exists, this must be uploaded and output set", async () => {

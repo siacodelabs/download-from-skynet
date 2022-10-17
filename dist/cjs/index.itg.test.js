@@ -24,7 +24,12 @@ suite("download file", () => {
     const portal = "https://web3portal.com";
     const localPath = node_path_1.default.join(node_os_1.default.tmpdir(), "downloaded.txt");
     setup(() => __awaiter(void 0, void 0, void 0, function* () {
-        yield promises_1.default.unlink(localPath);
+        try {
+            yield promises_1.default.unlink(localPath);
+        }
+        catch (_a) {
+            // nop
+        }
     }));
     test("if file exists, this must be uploaded and output set", () => __awaiter(void 0, void 0, void 0, function* () {
         // (1) arrange
