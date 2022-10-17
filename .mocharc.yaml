@@ -1,0 +1,8 @@
+ui: tdd
+timeout: 2000
+
+extension:
+  - js
+
+spec:
+  - dist/cjs/*[^itg].test.js

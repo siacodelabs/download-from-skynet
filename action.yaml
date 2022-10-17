@@ -1,0 +1,22 @@
+name: Download a File from Skynet
+description: Action for downloading a file from a Skynet platform.
+author: Sia Codelabs
+branding:
+  icon: download
+  color: gray-dark
+
+inputs:
+  portal:
+    description: Portal URL to use.
+    required: true
+    default: https://web3portal.com
+  skylink:
+    description: Skylink to download.
+    required: true
+  path:
+    description: Local path where to save the file.
+    required: true
+
+runs:
+  using: node16
+  main: dist/cjs/index.js

@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  runTests:
+    uses: siacodelabs/.github/.github/workflows/actions-ci.yaml@main
