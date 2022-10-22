@@ -9,7 +9,7 @@ suite(__filename, () => {
   suite("run()", () => {
     const skynetModulePath = require.resolve("@skynetlabs/skynet-nodejs")
     const actionsCoreModulePath = require.resolve("@actions/core")
-    const actionModulePath = require.resolve("./index")
+    const actionModulePath = require.resolve("./run")
 
     setup(() => {
       delete require.cache[skynetModulePath]
@@ -46,7 +46,7 @@ suite(__filename, () => {
       interceptor.module(actionsCoreModulePath, {getInput})
 
       // (2) act
-      const {run} = await import("./index")
+      const {run} = await import("./run")
       await run()
 
       // (3) assessment
@@ -85,7 +85,7 @@ suite(__filename, () => {
       interceptor.module(actionsCoreModulePath, {getInput, setFailed})
 
       // (2) act
-      const {run} = await import("./index")
+      const {run} = await import("./run")
       await run()
 
       // (3) assessment

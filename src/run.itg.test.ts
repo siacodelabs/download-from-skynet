@@ -1,7 +1,7 @@
 import os from "node:os"
 import path from "node:path"
 import fs from "node:fs/promises"
-import {run} from "./index"
+import {run} from "./run"
 import expected from "@akromio/expected"
 import plugin from "@akromio/expected-fs"
 import {SkynetClient} from "@skynetlabs/skynet-nodejs"
@@ -19,7 +19,7 @@ suite("download file", () => {
     }
   })
 
-  test("if file exists, this must be uploaded and output set", async () => {
+  test("if skylink exists, this must be downloaded", async () => {
     // (1) arrange
     const uploadLocalPath = path.join(__dirname, "../../tests/data/hello-world.txt")
     const skynet = new SkynetClient(portal)

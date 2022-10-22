@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_os_1 = __importDefault(require("node:os"));
 const node_path_1 = __importDefault(require("node:path"));
 const promises_1 = __importDefault(require("node:fs/promises"));
-const index_1 = require("./index");
+const run_1 = require("./run");
 const expected_1 = __importDefault(require("@akromio/expected"));
 const expected_fs_1 = __importDefault(require("@akromio/expected-fs"));
 const skynet_nodejs_1 = require("@skynetlabs/skynet-nodejs");
@@ -31,7 +31,7 @@ suite("download file", () => {
             // nop
         }
     }));
-    test("if file exists, this must be uploaded and output set", () => __awaiter(void 0, void 0, void 0, function* () {
+    test("if skylink exists, this must be downloaded", () => __awaiter(void 0, void 0, void 0, function* () {
         // (1) arrange
         const uploadLocalPath = node_path_1.default.join(__dirname, "../../tests/data/hello-world.txt");
         const skynet = new skynet_nodejs_1.SkynetClient(portal);
@@ -40,7 +40,7 @@ suite("download file", () => {
         process.env.INPUT_PATH = localPath;
         process.env.INPUT_SKYLINK = skylink;
         // (2) act
-        yield (0, index_1.run)();
+        yield (0, run_1.run)();
         // (3) assessment
         expected_1.default.file(localPath).equalToFile(uploadLocalPath);
     }));
@@ -50,9 +50,9 @@ suite("download file", () => {
         process.env.INPUT_PATH = localPath;
         process.env.INPUT_SKYLINK = "sia://unknown";
         // (2) act
-        yield (0, index_1.run)();
+        yield (0, run_1.run)();
         // (3) assessment
         (0, expected_1.default)(process.exitCode).equalTo(1);
     }));
 });
-//# sourceMappingURL=index.itg.test.js.map
+//# sourceMappingURL=run.itg.test.js.map

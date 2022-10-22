@@ -3,12 +3,41 @@ name: CI
 on:
   push:
     branches:
-      - main
-      
-  pull_request:
-    branches:
-      - main
+      - "**"
+
+permissions:
+  contents: write
 
 jobs:
-  runTests:
+  runUnitTests:
     uses: siacodelabs/.github/.github/workflows/actions-ci.yaml@main
+
+  runSystemTests:
+    needs: runUnitTests
+    runs-on: ubuntu-latest
+
+    env:
+      skylink: sia://AAAFCzW_tyQKKJZL_xHXHWE-XwusklwWBSv9HFFtZhtecA
+      localFilePath: /tmp/hello-world.txt
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: npm i --production
+      
+      - name: Download skylink
+        uses: ./
+        with:
+          skylink: ${{ env.skylink }}
+          path: ${{ env.localFilePath }}
+      
+      - name: Check local file
+        run: |
+          cat ${{ env.localFilePath }}
+
+          if [[ ! $(grep -i hello ${{ env.localFilePath }}) ]]; then
+            echo "::error::File should contain the text 'hello'."
+            exit 1
+          fi
