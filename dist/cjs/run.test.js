@@ -44,7 +44,7 @@ suite(__filename, () => {
     suite("run()", () => {
         const skynetModulePath = require.resolve("@skynetlabs/skynet-nodejs");
         const actionsCoreModulePath = require.resolve("@actions/core");
-        const actionModulePath = require.resolve("./index");
+        const actionModulePath = require.resolve("./run");
         setup(() => {
             delete require.cache[skynetModulePath];
             delete require.cache[actionsCoreModulePath];
@@ -71,7 +71,7 @@ suite(__filename, () => {
             ]));
             doubles_1.interceptor.module(actionsCoreModulePath, { getInput });
             // (2) act
-            const { run } = yield Promise.resolve().then(() => __importStar(require("./index")));
+            const { run } = yield Promise.resolve().then(() => __importStar(require("./run")));
             yield run();
             // (3) assessment
             let log = doubles_1.monitor.log(getInput, { clear: true });
@@ -99,7 +99,7 @@ suite(__filename, () => {
             const setFailed = (0, doubles_1.monitor)((0, doubles_1.method)());
             doubles_1.interceptor.module(actionsCoreModulePath, { getInput, setFailed });
             // (2) act
-            const { run } = yield Promise.resolve().then(() => __importStar(require("./index")));
+            const { run } = yield Promise.resolve().then(() => __importStar(require("./run")));
             yield run();
             // (3) assessment
             let log = doubles_1.monitor.log(getInput, { clear: true });
@@ -113,4 +113,4 @@ suite(__filename, () => {
         }));
     });
 });
-//# sourceMappingURL=index.test.js.map
+//# sourceMappingURL=run.test.js.map
