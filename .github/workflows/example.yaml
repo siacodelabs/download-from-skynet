@@ -1,0 +1,35 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+  push:
+    branches:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  call:
+    runs-on: ubuntu-latest
+
+    env:
+      skylink: sia://AAAFCzW_tyQKKJZL_xHXHWE-XwusklwWBSv9HFFtZhtecA
+      localFilePath: /tmp/hello-world.txt
+
+    steps:
+      - name: Download skylink
+        uses: siacodelabs/download-from-skynet@v1
+        with:
+          skylink: ${{ env.skylink }}
+          path: ${{ env.localFilePath }}
+      
+      - name: Check local file
+        run: |
+          cat ${{ env.localFilePath }}
+
+          if [[ ! $(grep -i hello ${{ env.localFilePath }}) ]]; then
+            echo "::error::File should contain the text 'hello'."
+            exit 1
+          fi

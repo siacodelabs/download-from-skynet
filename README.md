@@ -11,7 +11,7 @@ See [action.yaml](action.yaml)
 ```yaml
 steps:
   - name: Download file from Skynet platform
-    uses: siacodelabs/download-from-skynet
+    uses: siacodelabs/download-from-skynet@v1
     with:
       portal: https://web3portal.com
       skylink: sia://AAAFCzW_tyQKKJZL_xHXHWE-XwusklwWBSv9HFFtZhtecA
