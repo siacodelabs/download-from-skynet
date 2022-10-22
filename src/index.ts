@@ -1,6 +1,8 @@
 import * as core from "@actions/core"
 import {SkynetClient} from "@skynetlabs/skynet-nodejs"
 
+console.log("::log::loaded!")
+
 /**
  * Runs the action.
  */

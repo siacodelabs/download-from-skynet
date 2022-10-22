@@ -35,6 +35,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.run = void 0;
 const core = __importStar(require("@actions/core"));
 const skynet_nodejs_1 = require("@skynetlabs/skynet-nodejs");
+console.log("::log::loaded!");
 /**
  * Runs the action.
  */
