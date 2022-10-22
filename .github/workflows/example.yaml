@@ -1,11 +1,6 @@
 name: Test
 
-on:
-  workflow_dispatch:
-
-  push:
-    branches:
-      - "**"
+on: workflow_dispatch
 
 permissions:
   contents: write
