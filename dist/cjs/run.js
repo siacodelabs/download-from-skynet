@@ -46,10 +46,8 @@ function run() {
             const skylink = core.getInput("skylink");
             const localPath = core.getInput("path");
             // (2) download
-            console.log(`::log::Downloading ${skylink} to ${localPath}`);
             const skynet = new skynet_nodejs_1.SkynetClient(portal);
             yield skynet.downloadFile(localPath, skylink);
-            console.log(`::log::Downloaded ${skylink} to ${localPath}`);
         }
         catch (err) {
             core.setFailed(err);

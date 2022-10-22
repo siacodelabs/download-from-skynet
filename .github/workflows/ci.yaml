@@ -35,7 +35,6 @@ jobs:
       
       - name: Check local file
         run: |
-          ls -l /tmp
           cat ${{ env.localFilePath }}
 
           if [[ ! $(grep -i hello ${{ env.localFilePath }}) ]]; then
