@@ -3,12 +3,34 @@ name: CI
 on:
   push:
     branches:
-      - main
-      
-  pull_request:
-    branches:
-      - main
+      - "**"
 
 jobs:
-  runTests:
+  runUnitTests:
     uses: siacodelabs/.github/.github/workflows/actions-ci.yaml@main
+
+  runItgTests:
+    needs: runUnitTests
+    runs-on: ubuntu-latest
+
+    env:
+      skylink: sia://AAAFCzW_tyQKKJZL_xHXHWE-XwusklwWBSv9HFFtZhtecA
+      localFilePath: ${{ github.workspace }}/hello-world.txt
+
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@v3
+      
+      - name: Download skylink
+        uses: ./
+        with:
+          portal: https://web3portal.com
+          skylink: ${{ env.skylink }}
+          path: ${{ env.localFilePath }}
+      
+      - name: Check local file
+        run: |
+          if [[ ! $(grep -i hello ${{ env.localFilePath }}) ]]; then
+            echo "::error::File should contain the text 'hello'."
+            exit 1
+          fi
