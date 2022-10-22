@@ -2,7 +2,7 @@ name: Test
 
 on:
   workflow_dispatch:
-  
+
   push:
     branches:
       - "**"
@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Download skylink
-        uses: siacodelabs/download-from-skynet
+        uses: siacodelabs/download-from-skynet@v1
         with:
           skylink: ${{ env.skylink }}
           path: ${{ env.localFilePath }}
