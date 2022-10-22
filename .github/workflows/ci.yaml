@@ -15,7 +15,7 @@ jobs:
 
     env:
       skylink: sia://AAAFCzW_tyQKKJZL_xHXHWE-XwusklwWBSv9HFFtZhtecA
-      localFilePath: ${{ github.workspace }}/hello-world.txt
+      localFilePath: ${{ runner.temp }}/hello-world.txt
 
     steps:
       - name: Clone repo
