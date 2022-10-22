@@ -31,7 +31,7 @@ suite("download file", () => {
             // nop
         }
     }));
-    test("if file exists, this must be uploaded and output set", () => __awaiter(void 0, void 0, void 0, function* () {
+    test("if skylink exists, this must be downloaded", () => __awaiter(void 0, void 0, void 0, function* () {
         // (1) arrange
         const uploadLocalPath = node_path_1.default.join(__dirname, "../../tests/data/hello-world.txt");
         const skynet = new skynet_nodejs_1.SkynetClient(portal);
