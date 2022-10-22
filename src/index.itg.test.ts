@@ -19,7 +19,7 @@ suite("download file", () => {
     }
   })
 
-  test("if file exists, this must be uploaded and output set", async () => {
+  test("if file exists, this must be downloaded", async () => {
     // (1) arrange
     const uploadLocalPath = path.join(__dirname, "../../tests/data/hello-world.txt")
     const skynet = new SkynetClient(portal)

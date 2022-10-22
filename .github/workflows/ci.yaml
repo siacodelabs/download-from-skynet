@@ -9,7 +9,7 @@ jobs:
   runUnitTests:
     uses: siacodelabs/.github/.github/workflows/actions-ci.yaml@main
 
-  runItgTests:
+  runSystemTests:
     needs: runUnitTests
     runs-on: ubuntu-latest
 
@@ -27,7 +27,6 @@ jobs:
       - name: Download skylink
         uses: ./
         with:
-          portal: https://web3portal.com
           skylink: ${{ env.skylink }}
           path: ${{ env.localFilePath }}
       
