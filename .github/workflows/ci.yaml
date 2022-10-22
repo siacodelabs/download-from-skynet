@@ -33,6 +33,8 @@ jobs:
       
       - name: Check local file
         run: |
+          cat ${{ env.localFilePath }}
+
           if [[ ! $(grep -i hello ${{ env.localFilePath }}) ]]; then
             echo "::error::File should contain the text 'hello'."
             exit 1
