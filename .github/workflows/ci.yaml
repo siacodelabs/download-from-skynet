@@ -21,6 +21,9 @@ jobs:
       - name: Clone repo
         uses: actions/checkout@v3
       
+      - name: Install dependencies
+        run: npm i --production
+      
       - name: Download skylink
         uses: ./
         with:
