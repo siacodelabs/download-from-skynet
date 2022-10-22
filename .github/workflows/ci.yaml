@@ -5,6 +5,9 @@ on:
     branches:
       - "**"
 
+permissions:
+  contents: write
+
 jobs:
   runUnitTests:
     uses: siacodelabs/.github/.github/workflows/actions-ci.yaml@main
