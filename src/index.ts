@@ -12,7 +12,6 @@ export async function run(): Promise<void> {
     const localPath = core.getInput("path")
 
     // (2) download
-    console.log(`::log::Downloading ${skylink} to ${localPath}`)
     const skynet = new SkynetClient(portal)
     await skynet.downloadFile(localPath, skylink)
   } catch (err: any) {
