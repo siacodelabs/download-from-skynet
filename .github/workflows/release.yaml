@@ -9,7 +9,8 @@ on:
         type: string
 
 jobs:
-  runTests:
+  release:
+    name: Release action
     uses: siacodelabs/.github/.github/workflows/actions-release.yaml@main
     with:
       version: ${{ inputs.version }}
