@@ -1,0 +1,15 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version tag to create and publish
+        required: true
+        type: string
+
+jobs:
+  runTests:
+    uses: siacodelabs/.github/.github/workflows/actions-release.yaml@main
+    with:
+      version: ${{ inputs.version }}
